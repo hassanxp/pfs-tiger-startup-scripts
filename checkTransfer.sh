@@ -1,9 +1,9 @@
 #!/bin/bash
 rootDir=/projects/HSC/PFS/Subaru
 # URL for formal notifications
-# webHookUrl=https://hooks.slack.com/services/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
+# webHookUrl=XXXXX
 # For testing only
-webHookUrl=https://hooks.slack.com/services/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
+webHookUrl=XXXX
 
 latestRawDir=$(find ${rootDir} -maxdepth 1 -type d -name "20*"|sort |tail -n 1)
 latestDate=${latestRawDir: -10}
