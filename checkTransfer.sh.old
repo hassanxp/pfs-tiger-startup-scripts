@@ -1,0 +1,20 @@
+rootDir=/projects/HSC/PFS/Subaru
+webHookUrl=https://hooks.slack.com/services/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
+
+latestRawDir=$(find ${rootDir} -maxdepth 1 -type d -name "20*"|sort |tail -n 1)
+latestDate=${latestRawDir: -10}
+daysSinceLastTransfer=$(( ($(date +%s) - $(date --date=${latestDate} +%s) )/(60*60*24) ))
+
+msg="No message"
+if [[ ${daysSinceLastTransfer} -gt 0 ]]
+then
+    msg="WARNING: It has been ${daysSinceLastTransfer} days since last transfer of data from Hilo to Princeton."
+else
+    msg="Status OK: last transfer has been ${daysSinceLastTransfer} days ago."
+fi
+
+echo ${msg}
+
+# Post notification to slack
+#data="{'text':'${msg}'}"
+#curl -X POST -H 'Content-type: application/json' --data "${data}" "${webHookUrl}" 

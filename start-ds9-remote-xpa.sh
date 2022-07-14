@@ -1,0 +1,2 @@
+export XPA_PORT="DS9:ds9 22345 22346"
+

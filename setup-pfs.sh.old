@@ -1,0 +1,23 @@
+lsst=/tigress/HSC/PFS/stack/loadLSST.bash
+echo "Sourcing ${lsst} ..."
+source ${lsst}
+
+export EUPS_PKGROOT='https://eups.lsst.codes/stack/src|http://tigress-web.princeton.edu/~HSC/pfs-drp-2d/src'
+
+#setup lsst_distrib
+setup pfs_pipe2d 5.0.5
+
+
+export PYTHONPATH=/tigress/hassans/debugpath:${PYTHONPATH}
+
+#
+# Useful functions
+#
+
+# List versions currently setup for 2D DRP
+list_drp(){
+for i in datamodel obs_pfs drp_stella pfs_pipe2d; do
+	eups list -s $i
+done
+}
+
